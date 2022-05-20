@@ -1,0 +1,37 @@
+<div class="container">
+  <input
+    type="search"
+    [(ngModel)]="search"
+    class="form-control"
+    placeholder="Search..."
+    aria-label="Search"
+  />
+  <br />
+  <br />
+
+  <div class="row row-cols-md-3">
+    <div
+      class="col"
+      *ngFor="let pdt of Productlist | filter: search; let i = index"
+    >
+      <div class="card" style="width: 18rem">
+        <img src="{{ pdt.productimage }}" />
+        <div class="card-body">
+          <h5 class="card-title">{{ pdt.productName }}</h5>
+          <p class="card-text">{{ pdt.description }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Type :{{ pdt.type }}</li>
+          <li class="list-group-item">Rating :{{ pdt.rating }}</li>
+          <li class="list-group-item">Price :{{ pdt.price }}₹</li>
+        </ul>
+        <div class="card-body">
+          <button class="btn btn-success" (click)="addtocart(pdt, i)">
+            Add To Cart
+          </button>
+        </div>
+      </div>
+      <br />
+    </div>
+  </div>
+</div>
